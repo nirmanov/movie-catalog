@@ -8,11 +8,11 @@ export default function Search() {
 
   const [query, setQuery] = useState<string>("");
 
-  const handleInput = (e) => {
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
 
-  const handleSearch = async (e) => {
+  const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (query.trim() != "") {
       router.push(`/searchResults?query=${query}`);
