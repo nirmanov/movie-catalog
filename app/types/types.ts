@@ -10,17 +10,19 @@ export type MovieType = {
   nameEn: string;
   rating: string | null;
   year: string | null;
-  filmLength: string;
+  filmLength: number;
   ratingAgeLimits: string;
   ratingKinopoisk: string;
   ratingImdb: string;
   description: string;
   webUrl: string;
   type: string;
-  genres: string[];
-  genre: string;
-  countries: string[];
-  country: string;
+  genres: {
+    genre: string;
+  }[];
+  countries: {
+    country: string;
+  }[];
   ratingKinopoiskVoteCount: string;
 };
 
@@ -31,4 +33,19 @@ export type SearchResultPropsType = {
 export type FilmBlockType = {
   title: string;
   movies: MovieType[];
+};
+
+export type TrailerItemType = {
+  site: string;
+  url: string;
+};
+
+export type TrailerType = {
+  items: TrailerItemType[];
+};
+
+export type ParamsType = {
+  params: {
+    id: string;
+  };
 };

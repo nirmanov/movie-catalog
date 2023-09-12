@@ -3,10 +3,10 @@ import { fetchData, searchMovieTrailer } from "../../api/api";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MovieType } from "@/app/types/types";
+import { MovieType, ParamsType, TrailerType } from "@/app/types/types";
 import { capitalizeFirstLetter, formatMinutesToTime } from "@/app/utils/utils";
 
-export default function FilmDetail(params) {
+export default function FilmDetail(params: ParamsType) {
   const [loading, setLoading] = useState(true);
   const [movie, setMovie] = useState<MovieType>();
   const [trailerUrl, setTrailerUrl] = useState("");
@@ -21,7 +21,9 @@ export default function FilmDetail(params) {
       // проверяем наличиче ссылки на трейлер в API кинопоиска
       // иначе ищем через API YouTube
       const getTrailer = async () => {
-        const trailer = await fetchData(`v2.2/films/${id}/videos`);
+        const trailer: TrailerType = await fetchData(`v2.2/films/${id}/videos`);
+        console.log(trailer);
+
         const hasYoutube = trailer.items.some(
           (item) => item.site === "YOUTUBE"
         );
