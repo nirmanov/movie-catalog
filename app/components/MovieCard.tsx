@@ -4,8 +4,6 @@ import { MovieType } from "../types/types";
 import Link from "next/link";
 
 export default function MovieCard({ item }: { item: MovieType }) {
-  console.log(item);
-
   return (
     <div>
       <Link

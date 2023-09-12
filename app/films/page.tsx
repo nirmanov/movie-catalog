@@ -5,7 +5,6 @@ export default async function Films() {
   const movies = await fetchData(
     "v2.2/films/premieres?year=2023&month=SEPTEMBER"
   );
-  console.log(movies);
 
   return (
     <div>

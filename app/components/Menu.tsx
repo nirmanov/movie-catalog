@@ -9,8 +9,8 @@ export default function Menu() {
   const pathname = usePathname();
 
   const navLinks = [
-    { id: 1, name: "Home", href: "/", ico: "/home.png" },
-    { id: 2, name: "Films", href: "/films", ico: "/movie-projector.png" },
+    { id: 1, name: "Главная", href: "/", ico: "/home.png" },
+    { id: 2, name: "Фильмы", href: "/films", ico: "/movie-projector.png" },
   ];
   return (
     <nav>

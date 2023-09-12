@@ -7,7 +7,6 @@ import { SearchResultList } from "../components/SearchResultList";
 export default function SearchResults() {
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
-  console.log(query);
 
   const [movies, setMovies] = useState(null);
 

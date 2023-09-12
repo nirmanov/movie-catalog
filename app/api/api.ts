@@ -24,11 +24,11 @@ export async function fetchData(fetchParam: fetchParamType) {
 //api youtube для подгрузки трейлера
 const YOUTUBE_API = "AIzaSyCxvbE4HXey8QeVlxqYlCcvbVIB6QQ1TXM";
 
-export async function searchMovieTrailer(title: string) {
+export async function searchMovieTrailer(title: string, year: number) {
   try {
     const params = new URLSearchParams({
       key: YOUTUBE_API,
-      q: `${title} трейлер, trailer`,
+      q: `${title}, ${year} трейлер, trailer`,
       type: "video",
       maxResults: "1",
     });

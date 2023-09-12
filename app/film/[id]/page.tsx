@@ -16,13 +16,13 @@ export default function FilmDetail(params: ParamsType) {
     const getData = async () => {
       const data = await fetchData(`v2.2/films/${id}`);
       setMovie(data);
-      console.log(data);
+      // console.log(data);
 
       // проверяем наличиче ссылки на трейлер в API кинопоиска
       // иначе ищем через API YouTube
       const getTrailer = async () => {
         const trailer: TrailerType = await fetchData(`v2.2/films/${id}/videos`);
-        console.log(trailer);
+        // console.log(trailer);
 
         const hasYoutube = trailer.items.some(
           (item) => item.site === "YOUTUBE"
@@ -33,21 +33,27 @@ export default function FilmDetail(params: ParamsType) {
             .filter((item) => item.site === "YOUTUBE")
             .map((item) => item.url);
           let paramParts;
+          // console.log(youTubeUrls);
 
           if (youTubeUrls[0].includes("youtu.be")) {
             paramParts = youTubeUrls[0].split("youtu.be/");
+          } else if (youTubeUrls[0].includes("/v/")) {
+            paramParts = youTubeUrls[0].split("/v/");
           } else {
             paramParts = youTubeUrls[0].split("?v=");
           }
 
           const videoId = paramParts[1];
+
           setTrailerUrl(`https://www.youtube.com/embed/${videoId}`);
         } else {
-          searchMovieTrailer(data.nameRu || data.nameEn).then((youTubeUrl) => {
-            const paramParts = youTubeUrl.split("?v=");
-            const videoId = paramParts[1];
-            setTrailerUrl(`https://www.youtube.com/embed/${videoId}`);
-          });
+          searchMovieTrailer(data.nameRu || data.nameEn, data.year).then(
+            (youTubeUrl) => {
+              const paramParts = youTubeUrl.split("?v=");
+              const videoId = paramParts[1];
+              setTrailerUrl(`https://www.youtube.com/embed/${videoId}`);
+            }
+          );
         }
       };
       getTrailer();
@@ -74,13 +80,6 @@ export default function FilmDetail(params: ParamsType) {
               allowFullScreen
             ></iframe>
           </div>
-          {/* <Image
-        src={movie.posterUrl}
-        alt={movie.nameRu}
-        width={200}
-        height={300}
-        priority={true}
-      /> */}
           <div className="text-2xl">{movie.nameRu || movie.nameEn}</div>
           <div className="flex items-center text-xl gap-2">
             <div>
