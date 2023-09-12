@@ -1,12 +1,10 @@
 "use client";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { onSearch } from "../api/api";
-import Image from "next/image";
+import { fetchData } from "../api/api";
 import { SearchResultList } from "../components/SearchResultList";
 
 export default function SearchResults() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
   console.log(query);
@@ -14,15 +12,16 @@ export default function SearchResults() {
   const [movies, setMovies] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await onSearch(query);
+    const receiveFilms = async () => {
+      const data = await fetchData(
+        `v2.1/films/search-by-keyword?keyword=${query}`
+      );
       console.log(data);
-
       setMovies(data.films);
     };
 
     if (query) {
-      fetchData();
+      receiveFilms();
     }
   }, [query]);
 

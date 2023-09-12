@@ -10,7 +10,7 @@ export default function Menu() {
 
   const navLinks = [
     { id: 1, name: "Home", href: "/", ico: "/home.png" },
-    { id: 2, name: "Films", href: "/film", ico: "/movie-projector.png" },
+    { id: 2, name: "Films", href: "/films", ico: "/movie-projector.png" },
   ];
   return (
     <nav>

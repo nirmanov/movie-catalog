@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { onSearch } from "../api/api";
 
 export default function Search() {
   const router = useRouter();
@@ -17,8 +16,6 @@ export default function Search() {
     e.preventDefault();
     if (query.trim() != "") {
       router.push(`/searchResults?query=${query}`);
-      // const data = await onSearch(query);
-      // console.log(data);
     }
   };
   return (
