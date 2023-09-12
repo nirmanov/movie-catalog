@@ -44,10 +44,10 @@ export async function searchMovieTrailer(title: string) {
       return trailerUrl;
     } else {
       console.log("Трейлер не найден.");
-      return null;
+      return "";
     }
   } catch (error) {
     console.error("Ошибка при поиске трейлера:", error);
-    return null;
+    return "";
   }
 }
