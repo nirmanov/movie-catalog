@@ -8,7 +8,7 @@ export function capitalizeFirstLetter(str: string) {
 }
 
 //Форматирование отображения времени
-export function formatMinutesToTime(minutes) {
+export function formatMinutesToTime(minutes: number) {
   const hours = Math.floor(minutes / 60);
   const remainingMinutes = minutes % 60;
 

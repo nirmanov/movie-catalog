@@ -21,6 +21,7 @@ export type MovieType = {
   genre: string;
   countries: string[];
   country: string;
+  ratingKinopoiskVoteCount: string;
 };
 
 export type SearchResultPropsType = {
